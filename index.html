@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios DRE - Grupo FRI DO POVO</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Fundo cinza claro */
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem; /* Cantos arredondados */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Sombra */
+            padding: 1.5rem; /* Preenchimento */
+            margin-bottom: 1.5rem; /* Margem inferior */
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+    <div class="min-h-screen flex flex-col items-center p-4 sm:p-6 lg:p-8">
+        <!-- Seção do Cabeçalho -->
+        <header class="w-full max-w-4xl text-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Relatórios DRE - Grupo FRI DO POVO</h1>
+            <p class="text-lg sm:text-xl text-gray-600">Selecione a loja para visualizar os relatórios</p>
+        </header>
+
+        <!-- Lista de Lojas -->
+        <section class="w-full max-w-md card">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Lojas</h2>
+            <nav>
+                <ul class="space-y-4">
+                    <!-- Link para a página de anos da Loja 1 -->
+                    <li>
+                        <a href="Loja_1/index.html" class="block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            Sup. do Povo
+                        </a>
+                    </li>
+                    <!-- Repita para as outras lojas, apontando para seus respectivos índices de ano -->
+                    <li>
+                        <a href="Loja_2/index.html" class="block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            Sup. Almeida
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Loja_3/index.html" class="block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            Fri do Povo - Distribuidor
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Loja_4/index.html" class="block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            Irará
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Loja_5/index.html" class="block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg text-center transition duration-300 ease-in-out transform hover:scale-105">
+                            Coração de Maria
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+
+        <footer class="w-full max-w-4xl text-center mt-8 text-gray-500 text-sm">
+            <p>Desenvolvido para análise de DRE.</p>
+        </footer>
+    </div>
+</body>
+</html>
