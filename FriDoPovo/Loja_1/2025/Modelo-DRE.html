@@ -40,7 +40,7 @@
             padding-bottom: 0;
         }
         .collapsible-content.expanded {
-            max-height: 1000px; /* Aumentado para garantir que todo o conteúdo caiba */
+            max-height: 1000px; /* Um valor grande o suficiente para o conteúdo */
             transition: max-height 0.7s ease-in, padding 0.7s ease-in; /* Aumentado a duração da transição */
             padding-top: 1rem; /* p-4 */
             padding-bottom: 1rem; /* p-4 */
@@ -103,15 +103,113 @@
         <!-- 1. VISÃO GERAL – Diagnóstico Rápido -->
         <section class="w-full max-w-4xl card">
             <h2 class="text-2xl font-semibold text-gray-800 mb-4">1. VISÃO GERAL – Diagnóstico Rápido</h2>
+            <!-- Nova estrutura para os cards principais para manter o alinhamento -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div class="bg-blue-50 p-4 rounded-lg">
-                    <p class="text-sm text-gray-600">Receita Bruta:</p>
-                    <p class="text-lg font-bold text-blue-800">R$ 383.949,09</p>
+                    <p class="text-sm text-gray-600">
+                        <span class="text-lg font-bold text-blue-800 cursor-pointer" id="receitaBrutaLabel">Receita Bruta:</span>
+                        <span class="text-lg font-bold text-blue-800"> R$ 383.949,09</span>
+                    </p>
                 </div>
                 <div class="bg-blue-50 p-4 rounded-lg">
                     <p class="text-sm text-gray-600">Receita Líquida:</p>
                     <p class="text-lg font-bold text-blue-800">R$ 340.471,82</p>
                 </div>
+            </div>
+            <!-- Conteúdo colapsável das Formas de Pagamento (fora do grid de 2 colunas acima) -->
+            <div class="collapsible-content col-span-1 sm:col-span-2 bg-blue-100 rounded-lg mt-2" id="collapsibleContentReceita">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-3">Detalhes por Forma de Pagamento</h3>
+                <div class="text-gray-700">
+                    <div class="detail-item">
+                        <span class="category-title">CARTÃO:</span>
+                        <span class="total-value">R$ 172.514,13 (44,93%)</span>
+                    </div>
+                    <div class="sub-detail-group">
+                        <div class="sub-detail-item">
+                            <span class="label-text">CARTAO CREDITO:</span>
+                            <span class="item-value">72.795,59 (18,96%)</span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="label-text">CARTAO DEBITO:</span>
+                            <span class="item-value">78.654,18 (20,49%)</span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="label-text">CARTAO PARCELADO:</span>
+                            <span class="item-value">21.064,36 (5,49%)</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="category-title">VOUCHER:</span>
+                        <span class="total-value">R$ 46.502,25 (12,11%)</span>
+                    </div>
+                    <div class="sub-detail-group">
+                        <div class="sub-detail-item">
+                            <span class="label-text">ALELO:</span>
+                            <span class="item-value">15.761,55 (4,11%)</span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="label-text">LE CARD:</span>
+                            <span class="item-value">11.752,83 (3,06%)</span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="label-text">SODEXO:</span>
+                            <span class="item-value">6.472,31 (1,69%)</span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="label-text">TICKET:</span>
+                            <span class="item-value">6.546,54 (1,71%)</span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="label-text">VR:</span>
+                            <span class="item-value">5.969,02 (1,55%)</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="category-title">PIX:</span>
+                        <span class="total-value">R$ 48.298,90 (12,58%)</span>
+                    </div>
+                    <div class="sub-detail-group">
+                        <div class="sub-detail-item">
+                            <span class="label-text">PIX:</span>
+                            <span class="item-value">48.298,90 (12,58%)</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="category-title">DINHEIRO:</span>
+                        <span class="total-value">R$ 91.957,26 (23,95%)</span>
+                    </div>
+                    <div class="sub-detail-group">
+                        <div class="sub-detail-item">
+                            <span class="label-text">Dinheiro:</span>
+                            <span class="item-value">91.957,26 (23,95%)</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="category-title">OUTROS:</span>
+                        <span class="total-value">R$ 24.408,13 (6,36%)</span>
+                    </div>
+                    <div class="sub-detail-group">
+                        <div class="sub-detail-item">
+                            <span class="label-text">BOLETO 14 DIAS:</span>
+                            <span class="item-value">2.248,90 (0,59%)</span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="label-text">CREDITO LOJA:</span>
+                            <span class="item-value">182,39 (0,05%)</span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="label-text">Devolução:</span>
+                            <span class="item-value">8,61 (0,00%)</span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="label-text">PROMISSORIA:</span>
+                            <span class="item-value">21.968,23 (5,72%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Continuar com o restante dos cards da Visão Geral -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4"> <!-- Adicionado mt-4 para espaçamento -->
                 <div class="bg-green-50 p-4 rounded-lg">
                     <p class="text-sm text-gray-600">Lucro Líquido:</p>
                     <p class="text-lg font-bold text-green-800">R$ 8.736,84</p>
@@ -141,7 +239,7 @@
                     <p class="text-lg font-bold text-red-800">R$ 59.804,33 <span class="text-sm text-gray-600">(15,6%)</span></p>
                 </div>
                 <!-- Conteúdo colapsável das Despesas Operacionais -->
-                <div class="collapsible-content col-span-1 sm:col-span-2 bg-yellow-100 rounded-lg mt-2">
+                <div class="collapsible-content col-span-1 sm:col-span-2 bg-yellow-100 rounded-lg mt-2" id="collapsibleContentDespesas">
                     <!-- Ajuste no tamanho da fonte do título do bloco -->
                     <h3 class="text-2xl font-semibold text-gray-800 mb-3">Detalhes das Despesas Operacionais</h3>
                     <div class="text-gray-700">
@@ -228,34 +326,62 @@
                         <div class="detail-item">
                             <span class="category-title">DESPESAS COM IMÓVEL E INSTALAÇÕES:</span>
                             <span class="total-value">R$ 9.500,00 (2,5%)</span>
-                         </div>						
-						<div class="sub-detail-group">
-								<div class="sub-detail-item">
-									<span class="label-text">Aluguéis:</span>
-									<span class="item-value">9.500,00 (2,5%)</span>
-                                </div>
-						</div>                        
-						<div class="detail-item">
-                            <span class="category-title">MANUTEN. VEÍCULOS, MAQ. E EQUIPAMENTOS</span>
+                        </div>
+                        <div class="sub-detail-group">
+                            <div class="sub-detail-item">
+                                <span class="label-text">Aluguéis:</span>
+                                <span class="item-value">9.500,00 (2,5%)</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <span class="category-title">MANUTEN. VEÍCULOS, MAQ. E EQUIPAMENTOS:</span>
                             <span class="total-value">R$ 1.535,80 (0,4%)</span>
                         </div>
-						<div class="sub-detail-group">
-								<div class="sub-detail-item">
-									<span class="label-text">Despesa Com Depreciação de Imobilizado:</span>
-									<span class="item-value">1.535,80 (0,4%)</span>
-                                </div>
-						</div>					
+                        <div class="sub-detail-group">
+                            <div class="sub-detail-item">
+                                <span class="label-text">Despesa Com Depreciação de Imobilizado:</span>
+                                <span class="item-value">1.535,80 (0,4%)</span>
+                            </div>
+                        </div>
                         <div class="detail-item">
-                            <span class="category-title">DESPESAS COM PROMOÇÃO DE VENDAS - :</span>
+                            <span class="category-title">DESPESAS COM PROMOÇÃO DE VENDAS:</span>
                             <span class="total-value">R$ 582,72 (0,2%)</span>
                         </div>
-						<div class="sub-detail-group">
-								<div class="sub-detail-item">
-									<span class="label-text">Propaganda e Promoção:</span>
-									<span class="item-value">582,72 (0,2%)</span>
-                                </div>
-						</div>						
+                        <div class="sub-detail-group">
+                            <div class="sub-detail-item">
+                                <span class="label-text">Propaganda e Promoção:</span>
+                                <span class="item-value">582,72 (0,2%)</span>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">Lucro Líquido:</p>
+                    <p class="text-lg font-bold text-green-800">R$ 8.736,84</p>
+                </div>
+                <div class="bg-red-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">Margem Líquida:</p>
+                    <p class="text-lg font-bold text-red-800">2,3% <span class="text-sm text-gray-600">(abaixo do ideal de 4% a 6%)</span></p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">Margem Bruta:</p>
+                    <p class="text-lg font-bold text-green-800">27,8% <span class="text-sm text-gray-600">(dentro da faixa ideal de 25% a 35%)</span></p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">CMV:</p>
+                    <p class="text-lg font-bold text-gray-800">R$ 277.245,75 <span class="text-sm text-gray-600">(72,2% da receita bruta)</span></p>
+                </div>
+                <!-- Card de Despesas Operacionais com o label clicável -->
+                <div class="bg-yellow-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">
+                        <span class="text-lg font-bold text-blue-800 cursor-pointer" id="despesasOperacionaisLabel">Despesas Operacionais:</span>
+                        <span class="text-lg font-bold text-yellow-800"> R$ 53.340,91 <span class="text-sm text-gray-600">(13,9%)</span></span>
+                    </p>
+                </div>
+                <!-- Card de Impostos movido para o lado de Despesas Operacionais -->
+                <div class="bg-red-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">Impostos:</p>
+                    <p class="text-lg font-bold text-red-800">R$ 59.804,33 <span class="text-sm text-gray-600">(15,6%)</span></p>
                 </div>
                 <div class="bg-green-50 p-4 rounded-lg">
                     <p class="text-sm text-gray-600">Perdas com produtos:</p>
@@ -474,22 +600,22 @@
                         <tr>
                             <td class="py-3 px-4 whitespace-nowrap">Auditoria fiscal tributária</td>
                             <td class="py-3 px-4">Reduzir carga efetiva de ICMS de 9,4% para 7% até jan/2026</td>
-                            <td class="py-3 px-4 text-red-600 font-medium">Alta</td>
+                            <td class="py-3 px-4 whitespace-nowrap">Alta</td>
                         </tr>
                         <tr>
                             <td class="py-3 px-4 whitespace-nowrap">Otimizar despesas operacionais</td>
                             <td class="py-3 px-4">Reduzir despesas gerais de 13,9% para 11% em 90 dias</td>
-                            <td class="py-3 px-4 text-yellow-600 font-medium">Média</td>
+                            <td class="py-3 px-4 whitespace-nowrap">Média</td>
                         </tr>
                         <tr>
                             <td class="py-3 px-4 whitespace-nowrap">Melhorar margem líquida</td>
                             <td class="py-3 px-4">Atingir margem de 4% até março/2026</td>
-                            <td class="py-3 px-4 text-red-600 font-medium">Alta</td>
+                            <td class="py-3 px-4 whitespace-nowrap">Alta</td>
                         </tr>
                         <tr>
                             <td class="py-3 px-4 whitespace-nowrap">Implantar BI de estoque</td>
                             <td class="py-3 px-4">Calcular e monitorar giro de estoque mensalmente</td>
-                            <td class="py-3 px-4 text-red-600 font-medium">Alta</td>
+                            <td class="py-3 px-4 whitespace-nowrap">Alta</td>
                         </tr>
                     </tbody>
                 </table>
@@ -516,15 +642,28 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const despesasLabel = document.getElementById('despesasOperacionaisLabel');
-            const collapsibleContent = document.querySelector('.collapsible-content');
+            // Script para Receita Bruta
+            const receitaBrutaLabel = document.getElementById('receitaBrutaLabel');
+            const collapsibleContentReceita = document.getElementById('collapsibleContentReceita');
 
-            if (despesasLabel && collapsibleContent) {
-                despesasLabel.addEventListener('click', function() {
-                    collapsibleContent.classList.toggle('expanded');
+            if (receitaBrutaLabel && collapsibleContentReceita) {
+                receitaBrutaLabel.addEventListener('click', function() {
+                    collapsibleContentReceita.classList.toggle('expanded');
                 });
             } else {
-                console.error("Elementos 'despesasOperacionaisLabel' ou 'collapsible-content' não encontrados.");
+                console.error("Elementos 'receitaBrutaLabel' ou 'collapsibleContentReceita' não encontrados.");
+            }
+
+            // Script para Despesas Operacionais
+            const despesasLabel = document.getElementById('despesasOperacionaisLabel');
+            const collapsibleContentDespesas = document.getElementById('collapsibleContentDespesas');
+
+            if (despesasLabel && collapsibleContentDespesas) {
+                despesasLabel.addEventListener('click', function() {
+                    collapsibleContentDespesas.classList.toggle('expanded');
+                });
+            } else {
+                console.error("Elementos 'despesasOperacionaisLabel' ou 'collapsibleContentDespesas' não encontrados.");
             }
         });
     </script>
