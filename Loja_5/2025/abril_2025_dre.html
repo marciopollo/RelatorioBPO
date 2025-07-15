@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise DRE - VS CASA DE CARNES LTDA - Loja 5</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+            padding: 1.5rem; /* p-6 */
+            margin-bottom: 1.5rem; /* mb-6 */
+        }
+        .kpi-status-✅ {
+            color: #10b981; /* green-500 */
+            font-weight: 600;
+        }
+        .kpi-status-⚠️ {
+            color: #f59e0b; /* yellow-500 */
+            font-weight: 600;
+        }
+        .kpi-status-❌ {
+            color: #ef4444; /* red-500 */
+            font-weight: 600;
+        }
+        /* Estilo para o conteúdo colapsável */
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out; /* Adicionado transição para padding */
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .collapsible-content.expanded {
+            max-height: 1000px; /* Um valor grande o suficiente para o conteúdo */
+            transition: max-height 0.7s ease-in, padding 0.7s ease-in; /* Aumentado a duração da transição */
+            padding-top: 1rem; /* p-4 */
+            padding-bottom: 1rem; /* p-4 */
+        }
+        /* Melhorias visuais para o conteúdo detalhado */
+        .collapsible-content .detail-item {
+            margin-bottom: 0.5rem; /* Espaçamento entre os itens da lista */
+            line-height: 1.4; /* Altura da linha para melhor leitura */
+            display: flex; /* Usa flexbox para alinhar conteúdo */
+            justify-content: space-between; /* Espaça o label e o valor */
+            align-items: flex-start; /* Alinha itens ao topo */
+            padding-left: 1.5rem; /* Indentação para os itens principais */
+        }
+        .collapsible-content .sub-detail-group {
+            margin-top: 0.25rem;
+            margin-bottom: 0.25rem;
+            border-left: 2px solid #fcd34d; /* yellow-300 - uma linha para agrupar */
+            padding-left: 0.75rem;
+            flex-basis: 100%; /* Garante que o grupo de sub-detalhes ocupe toda a largura disponível */
+            display: block; /* Garante que o grupo se comporte como um bloco */
+        }
+        .collapsible-content .sub-detail-item {
+            font-size: 0.9rem; /* Fonte ligeiramente menor para sub-itens */
+            color: #4b5563; /* gray-700 */
+            padding-left: 0; /* Remove padding extra para sub-itens */
+            display: flex; /* Adicionado flexbox para alinhamento dos sub-itens */
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.25rem; /* Espaçamento entre sub-itens */
+        }
+        .collapsible-content .category-title {
+            font-weight: 700; /* Bold para títulos de categoria */
+            color: #1f2937; /* gray-900 */
+            flex-shrink: 0; /* Impede que o título encolha */
+        }
+        .collapsible-content .total-value {
+            font-weight: 700; /* Bold para valores totalizadores */
+            text-align: right; /* Alinha o valor à direita */
+            margin-left: 1rem; /* Espaçamento entre o label e o valor */
+        }
+        .collapsible-content .item-value {
+            font-weight: 400; /* Fonte normal para valores de sub-itens */
+            text-align: right;
+            margin-left: 1rem;
+        }
+        .collapsible-content .label-text {
+            flex-grow: 1; /* Permite que o texto do label ocupe o espaço restante */
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+    <div class="min-h-screen flex flex-col items-center p-4 sm:p-6 lg:p-8">
+        <!-- Header Section -->
+        <header class="w-full max-w-4xl text-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Análise DRE - VS CASA DE CARNES LTDA - Loja 5</h1>
+            <p class="text-lg sm:text-xl text-gray-600">Período: 01 a 30 de Abril de 2025</p>
+            <p class="text-md text-gray-500 mt-1">VISÃO GERAL – Diagnóstico Rápido</p>
+        </header>
+
+        <!-- 1. VISÃO GERAL – Diagnóstico Rápido -->
+        <section class="w-full max-w-4xl card">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">VISÃO GERAL – Diagnóstico Rápido</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">
+                        <span class="text-lg font-bold text-blue-800 cursor-pointer" id="receitaBrutaLabel">Receita Bruta:</span>
+                        <span class="text-lg font-bold text-blue-800"> R$ 574.340,44</span>
+                    </p>
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">Receita Líquida:</p>
+                    <p class="text-lg font-bold text-blue-800">R$ 569.059,42 <span class="text-sm text-gray-600">(98,9% – ✅ Boa retenção de faturamento)</span></p>
+                </div>
+            </div>
+            <!-- Conteúdo colapsável das Formas de Pagamento -->
+            <div class="collapsible-content col-span-1 sm:col-span-2 bg-blue-100 rounded-lg mt-2" id="collapsibleContentReceita">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-3">Detalhes por Forma de Pagamento</h3>
+                <div class="text-gray-700">
+                    <div class="detail-item">
+                        <span class="category-title">BOLETO 14 21 28 DIAS:</span>
+                        <span class="total-value">R$ 11.053,80 (1,92%)</span>
+                    </div>
+                    <div class="sub-detail-group">
+                        <div class="sub-detail-item">
+                            <span class="label-text">BOLETO 14 21 28 DIAS:</span>
+                            <span class="item-value">11.053,80 (1,92%)</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="category-title">CARTÃO:</span>
+                        <span class="total-value">R$ 217.178,59 (34,45%)</span>
+                    </div>
+                    <div class="sub-detail-group">
+                        <div class="sub-detail-item">
+                            <span class="label-text">CARTAO CREDITO:</span>
+                            <span class="item-value">109.078,32 (18,99%)</span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="label-text">CARTAO DEBITO:</span>
+                            <span class="item-value">102.174,18 (17,79%)</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="category-title">CRÉDITO LOJA:</span>
+                        <span class="total-value">R$ 180,49 (0,04%)</span>
+                    </div>
+                    <div class="sub-detail-group">
+                        <div class="sub-detail-item">
+                            <span class="label-text">CREDITO LOJA:</span>
+                            <span class="item-value">50,89 (0,01%)</span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="label-text">Crédito Loja (2):</span>
+                            <span class="item-value">66,38 (0,01%)</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="category-title">DINHEIRO:</span>
+                        <span class="total-value">R$ 243.954,81 (42,48%)</span>
+                    </div>
+                    <div class="sub-detail-group">
+                        <div class="sub-detail-item">
+                            <span class="label-text">Dinheiro (1):</span>
+                            <span class="item-value">236.899,52 (41,25%)</span>
+                        </div>
+                        <div class="sub-detail-item">
+                            <span class="label-text">DINHEIRO (2):</span>
+                            <span class="item-value">7.055,29 (1,23%)</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="category-title">PIX:</span>
+                        <span class="total-value">R$ 77.951,58 (13,57%)</span>
+                    </div>
+                    <div class="sub-detail-group">
+                        <div class="sub-detail-item">
+                            <span class="label-text">PIX:</span>
+                            <span class="item-value">77.951,58 (13,57%)</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="category-title">PROMISSORIA:</span>
+                        <span class="total-value">R$ 10.664,99 (1,86%)</span>
+                    </div>
+                    <div class="sub-detail-group">
+                        <div class="sub-detail-item">
+                            <span class="label-text">PROMISSORIA:</span>
+                            <span class="item-value">10.664,99 (1,86%)</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="category-title">TICKET:</span>
+                        <span class="total-value">R$ 4.915,05 (0,86%)</span>
+                    </div>
+                    <div class="sub-detail-group">
+                        <div class="sub-detail-item">
+                            <span class="label-text">TICKET:</span>
+                            <span class="item-value">4.915,05 (0,86%)</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="category-title">VR BENEFICIOS:</span>
+                        <span class="total-value">R$ 14.217,45 (2,48%)</span>
+                    </div>
+                    <div class="sub-detail-group">
+                        <div class="sub-detail-item">
+                            <span class="label-text">VR BENEFICIOS:</span>
+                            <span class="item-value">14.217,45 (2,48%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Continuar com o restante dos cards da Visão Geral -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4"> <!-- Adicionado mt-4 para espaçamento -->
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">Lucro Líquido:</p>
+                    <p class="text-lg font-bold text-green-800">R$ 84.451,33 <span class="text-sm text-gray-600">(12,0% ✅)</span></p>
+                </div>
+                <div class="red-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">CMV:</p>
+                    <p class="text-lg font-bold text-red-800">R$ 558.119,67 <span class="text-sm text-gray-600">(79,2% ❌)</span></p>
+                </div>
+                <!-- Card de Despesas Operacionais com o label clicável -->
+                <div class="bg-yellow-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">
+                        <span class="text-lg font-bold text-blue-800 cursor-pointer" id="despesasOperacionaisLabel">Despesas Operacionais:</span>
+                        <span class="text-lg font-bold text-yellow-800"> R$ 52.404,83 <span class="text-sm text-gray-600">(7,4% ✅)</span></span>
+                    </p>
+                </div>
+                <!-- Card de Perdas operacionais movido para o lado de Despesas Operacionais -->
+                <div class="green-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">Perdas operacionais:</p>
+                    <p class="text-lg font-bold text-green-800">R$ 403,93 <span class="text-sm text-gray-600">(0,1% ✅)</span></p>
+                </div>
+                <!-- Conteúdo colapsável das Despesas Operacionais -->
+                <div class="collapsible-content col-span-1 sm:col-span-2 bg-yellow-100 rounded-lg mt-2" id="collapsibleContentDespesas">
+                    <!-- Ajuste no tamanho da fonte do título do bloco -->
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Detalhes das Despesas Operacionais</h3>
+                    <div class="text-gray-700">
+                        <div class="detail-item">
+                            <span class="category-title">DESPESAS COM PESSOAL:</span>
+                            <span class="total-value">R$ 30.483,11 (5,3%)</span>
+                        </div>
+                        <div class="sub-detail-group">
+                            <div class="sub-detail-item">
+                                <span class="label-text">Salários e Encargos Pessoal Adm.:</span>
+                                <span class="item-value">20.779,51 (3,6%)</span>
+                            </div>
+                            <div class="sub-detail-item">
+                                <span class="label-text">FGTS Adm.:</span>
+                                <span class="item-value">1.816,26 (0,3%)</span>
+                            </div>
+                            <div class="sub-detail-item">
+                                <span class="label-text">Provisão Para Férias e Décimo Terceiro Adm.:</span>
+                                <span class="item-value">4.064,99 (0,7%)</span>
+                            </div>
+                            <div class="sub-detail-item">
+                                <span class="label-text">Vale Transporte Adm.:</span>
+                                <span class="item-value">146,44 (0,0%)</span>
+                            </div>
+                            <div class="sub-detail-item">
+                                <span class="label-text">Alimentação de Trabalhadores Adm.:</span>
+                                <span class="item-value">300,00 (0,1%)</span>
+                            </div>
+                            <div class="sub-detail-item">
+                                <span class="label-text">Horas Extras e Diárias Setor Adm.:</span>
+                                <span class="item-value">2.585,91 (0,5%)</span>
+                            </div>
+                            <div class="sub-detail-item">
+                                <span class="label-text">Gratificações e Abonos a Empregados Adm:</span>
+                                <span class="item-value">790,00 (0,1%)</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <span class="category-title">DESPESAS ADMINISTRATIVAS:</span>
+                            <span class="total-value">R$ 8.782,80 (1,5%)</span>
+                        </div>
+                        <div class="sub-detail-group">
+                            <div class="sub-detail-item">
+                                <span class="label-text">Água e Esgoto Adm.:</span>
+                                <span class="item-value">102,16 (0,0%)</span>
+                            </div>
+                            <div class="sub-detail-item">
+                                <span class="label-text">Energia Elétrica Adm.:</span>
+                                <span class="item-value">540,89 (0,1%)</span>
+                            </div>
+                            <div class="sub-detail-item">
+                                <span class="label-text">Telefone e Internet Adm.:</span>
+                                <span class="item-value">71,90 (0,0%)</span>
+                            </div>
+                            <div class="sub-detail-item">
+                                <span class="label-text">Manutenção de Sistemas e Software Adm.:</span>
+                                <span class="item-value">470,00 (0,1%)</span>
+                            </div>
+                            <div class="sub-detail-item">
+                                <span class="label-text">Material de Limpeza e Higienização Adm.:</span>
+                                <span class="item-value">260,00 (0,0%)</span>
+                            </div>
+                            <div class="sub-detail-item">
+                                <span class="label-text">Honorários Contábeis e Advocatícios:</span>
+                                <span class="item-value">5.900,00 (1,0%)</span>
+                            </div>
+                            <div class="sub-detail-item">
+                                <span class="label-text">Tarifas Bancárias:</span>
+                                <span class="item-value">166,85 (0,0%)</span>
+                            </div>
+                            <div class="sub-detail-item">
+                                <span class="label-text">Etiquetas:</span>
+                                <span class="item-value">1.271,00 (0,2%)</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <span class="category-title">DESPESAS COM IMÓVEL E INSTALAÇÕES:</span>
+                            <span class="total-value">R$ 3.116,00 (0,5%)</span>
+                        </div>
+                        <div class="sub-detail-group">
+                            <div class="sub-detail-item">
+                                <span class="label-text">Aluguéis:</span>
+                                <span class="item-value">3.036,00 (0,5%)</span>
+                            </div>
+                            <div class="sub-detail-item">
+                                <span class="label-text">Manutenção Predial:</span>
+                                <span class="item-value">80,00 (0,0%)</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <span class="category-title">MANUTEN. VEÍCULOS, MAQ. E EQUIPAMENTOS:</span>
+                            <span class="total-value">R$ 2.298,15 (0,4%)</span>
+                        </div>
+                        <div class="sub-detail-group">
+                            <div class="sub-detail-item">
+                                <span class="label-text">Despesa Com Depreciação de Imobilizado:</span>
+                                <span class="item-value">2.298,15 (0,4%)</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <span class="category-title">DESPESAS DO AÇOUGUE:</span>
+                            <span class="total-value">R$ 881,40 (0,2%)</span>
+                        </div>
+                        <div class="sub-detail-group">
+                            <div class="sub-detail-item">
+                                <span class="label-text">Serviço de Abate Bovino:</span>
+                                <span class="item-value">246,40 (0,0%)</span>
+                            </div>
+                            <div class="sub-detail-item">
+                                <span class="label-text">Limpeza e Higienização Açougue:</span>
+                                <span class="item-value">635,00 (0,1%)</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <span class="category-title">DESPESAS COM PESSOAL DE VENDAS:</span>
+                            <span class="total-value">R$ 11,80 (0,0%)</span>
+                        </div>
+                        <div class="sub-detail-group">
+                            <div class="sub-detail-item">
+                                <span class="label-text">Tarifas de Cobrança via PIX:</span>
+                                <span class="item-value">11,80 (0,0%)</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <span class="category-title">DESPESAS COM PROMOÇÃO DE VENDAS:</span>
+                            <span class="total-value">R$ 120,00 (0,0%)</span>
+                        </div>
+                        <div class="sub-detail-group">
+                            <div class="sub-detail-item">
+                                <span class="label-text">Anúncios em Mídias Tradicionais:</span>
+                                <span class="item-value">120,00 (0,0%)</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <span class="category-title">RETIRADAS DE SÓCIOS:</span>
+                            <span class="total-value">R$ 1.572,39 (0,3%)</span>
+                        </div>
+                        <div class="sub-detail-group">
+                            <div class="sub-detail-item">
+                                <span class="label-text">Pró-Labore Sócio 1:</span>
+                                <span class="item-value">1.572,39 (0,3%)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="green-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">Margem Líquida:</p>
+                    <p class="text-lg font-bold text-green-800">R$ 84.451,33 <span class="text-sm text-gray-600">(12,0% ✅)</span></p>
+                </div>
+                <div class="red-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">CMV:</p>
+                    <p class="text-lg font-bold text-red-800">R$ 558.119,67 <span class="text-sm text-gray-600">(79,2% ❌)</span></p>
+                </div>
+                <div class="green-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">Despesas Operacionais:</p>
+                    <p class="text-lg font-bold text-green-800">R$ 52.404,83 <span class="text-sm text-gray-600">(7,4% ✅)</span></p>
+                </div>
+                <div class="green-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">Despesas com Pessoal:</p>
+                    <p class="text-lg font-bold text-green-800">R$ 30.483,11 <span class="text-sm text-gray-600">(5,3% ✅)</span></p>
+                </div>
+                <div class="green-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">Aluguel:</p>
+                    <p class="text-lg font-bold text-green-800">R$ 3.036,00 <span class="text-sm text-gray-600">(0,5% ✅)</span></p>
+                </div>
+                <div class="green-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">Comissões:</p>
+                    <p class="text-lg font-bold text-green-800">R$ 5.379,92 <span class="text-sm text-gray-600">(0,8% ✅)</span></p>
+                </div>
+                <div class="red-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">Impostos:</p>
+                    <p class="text-lg font-bold text-red-800">R$ 0,00 <span class="text-sm text-gray-600">(0,0% ❌ Ausente)</span></p>
+                </div>
+                <div class="green-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">EBITDA Estimado:</p>
+                    <p class="text-lg font-bold text-green-800">R$ 86.240,33 <span class="text-sm text-gray-600">(12,2% ✅)</span></p>
+                </div>
+                <div class="green-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-600">Perdas operacionais:</p>
+                    <p class="text-lg font-bold text-green-800">R$ 403,93 <span class="text-sm text-gray-600">(0,1% ✅)</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. CÁLCULO DOS INDICADORES (KPI’s) -->
+        <section class="w-full max-w-4xl card">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">2. CÁLCULO DOS INDICADORES (KPI’s)</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white rounded-lg overflow-hidden">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="py-3 px-4 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Indicador</th>
+                            <th class="py-3 px-4 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Valor (R$)</th>
+                            <th class="py-3 px-4 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">% s/ Receita Bruta</th>
+                            <th class="py-3 px-4 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Diagnóstico</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr>
+                            <td class="py-3 px-4 whitespace-nowrap">Receita Bruta</td>
+                            <td class="py-3 px-4 whitespace-nowrap">704.588,58</td>
+                            <td class="py-3 px-4 whitespace-nowrap">100%</td>
+                            <td class="py-3 px-4 whitespace-nowrap">—</td>
+                            <td class="py-3 px-4 whitespace-nowrap kpi-status-✅">Base</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 whitespace-nowrap">Receita Líquida</td>
+                            <td class="py-3 px-4 whitespace-nowrap">697.225,31</td>
+                            <td class="py-3 px-4 whitespace-nowrap">98,9%</td>
+                            <td class="py-3 px-4 whitespace-nowrap">—</td>
+                            <td class="py-3 px-4 whitespace-nowrap kpi-status-✅">Saudável</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 whitespace-nowrap">CMV</td>
+                            <td class="py-3 px-4 whitespace-nowrap">558.119,67</td>
+                            <td class="py-3 px-4 whitespace-nowrap">79,2%</td>
+                            <td class="py-3 px-4 whitespace-nowrap">&lt;78%</td>
+                            <td class="py-3 px-4 whitespace-nowrap kpi-status-❌">Crítico</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 whitespace-nowrap">Margem Bruta</td>
+                            <td class="py-3 px-4 whitespace-nowrap">139.105,64</td>
+                            <td class="py-3 px-4 whitespace-nowrap">19,7%</td>
+                            <td class="py-3 px-4 whitespace-nowrap">&gt;22%</td>
+                            <td class="py-3 px-4 whitespace-nowrap kpi-status-⚠️">Moderado</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 whitespace-nowrap">Despesas Operacionais</td>
+                            <td class="py-3 px-4 whitespace-nowrap">52.404,83</td>
+                            <td class="py-3 px-4 whitespace-nowrap">7,4%</td>
+                            <td class="py-3 px-4 whitespace-nowrap">Até 7%</td>
+                            <td class="py-3 px-4 whitespace-nowrap kpi-status-✅">Adequado</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 whitespace-nowrap">Despesas com Pessoal</td>
+                            <td class="py-3 px-4 whitespace-nowrap">33.651,71</td>
+                            <td class="py-3 px-4 whitespace-nowrap">4,8%</td>
+                            <td class="py-3 px-4 whitespace-nowrap">Até 5%</td>
+                            <td class="py-3 px-4 whitespace-nowrap kpi-status-✅">Abaixo do limite</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 whitespace-nowrap">Aluguel</td>
+                            <td class="py-3 px-4 whitespace-nowrap">3.700,00</td>
+                            <td class="py-3 px-4 whitespace-nowrap">0,5%</td>
+                            <td class="py-3 px-4 whitespace-nowrap">Até 1,2%</td>
+                            <td class="py-3 px-4 whitespace-nowrap kpi-status-✅">Controlado</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 whitespace-nowrap">Energia Elétrica</td>
+                            <td class="py-3 px-4 whitespace-nowrap">1.210,80</td>
+                            <td class="py-3 px-4 whitespace-nowrap">0,2%</td>
+                            <td class="py-3 px-4 whitespace-nowrap">Até 1,5%</td>
+                            <td class="py-3 px-4 whitespace-nowrap kpi-status-✅">Excelente</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 whitespace-nowrap">Comissões</td>
+                            <td class="py-3 px-4 whitespace-nowrap">5.379,92</td>
+                            <td class="py-3 px-4 whitespace-nowrap">0,8%</td>
+                            <td class="py-3 px-4 whitespace-nowrap">Até 1,8%</td>
+                            <td class="py-3 px-4 whitespace-nowrap kpi-status-✅">Adequado</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 whitespace-nowrap">Impostos</td>
+                            <td class="py-3 px-4 whitespace-nowrap">0,00</td>
+                            <td class="py-3 px-4 whitespace-nowrap">0,0%</td>
+                            <td class="py-3 px-4 whitespace-nowrap">Até 3%</td>
+                            <td class="py-3 px-4 whitespace-nowrap kpi-status-❌">Ausente</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 whitespace-nowrap">Margem Líquida</td>
+                            <td class="py-3 px-4 whitespace-nowrap">84.451,33</td>
+                            <td class="py-3 px-4 whitespace-nowrap">12,0%</td>
+                            <td class="py-3 px-4 whitespace-nowrap">&gt;6%</td>
+                            <td class="py-3 px-4 whitespace-nowrap kpi-status-✅">Excelente</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 whitespace-nowrap">EBITDA Estimado</td>
+                            <td class="py-3 px-4 whitespace-nowrap">86.240,33</td>
+                            <td class="py-3 px-4 whitespace-nowrap">12,2%</td>
+                            <td class="py-3 px-4 whitespace-nowrap">&gt;7%</td>
+                            <td class="py-3 px-4 whitespace-nowrap kpi-status-✅">Saudável</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 whitespace-nowrap">Perdas Operacionais</td>
+                            <td class="py-3 px-4 whitespace-nowrap">403,93</td>
+                            <td class="py-3 px-4 whitespace-nowrap">0,1%</td>
+                            <td class="py-3 px-4 whitespace-nowrap">Até 2%</td>
+                            <td class="py-3 px-4 whitespace-nowrap kpi-status-✅">Excelente</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 3. CHECKLIST DE DESPESAS AUSENTES -->
+        <section class="w-full max-w-4xl card">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">3. CHECKLIST DE DESPESAS AUSENTES</h2>
+            <h3 class="text-lg font-medium text-gray-700 mb-2">✅ Informados:</h3>
+            <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+                <li>Provisão para Encargos Sociais</li>
+                <li>Perdas Operacionais</li>
+                <li>Comissão de Adm. de Vouchers</li>
+                <li>Comissão Intermediários de Cartão</li>
+                <li>Salários</li>
+                <li>FGTS</li>
+                <li>Despesas com Material de Limpeza</li>
+                <li>Honorários Contábeis</li>
+                <li>Energia Elétrica</li>
+                <li>Aluguel</li>
+                <li>Tarifas Bancárias</li>
+                <li>Depreciação</li>
+                <li>Material de Embalagem</li>
+            </ul>
+            <h3 class="text-lg font-medium text-gray-700 mb-2 mt-6">❌ Ausentes:</h3>
+            <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+                <li>Despesas com ICMS sobre Vendas – Ausente</li>
+            </ul>
+        </section>
+
+        <!-- 4. Análise Operacional e Estratégica -->
+        <section class="w-full max-w-4xl card">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">4. Análise Operacional e Estratégica</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="font-medium text-gray-700">Compras / CMV:</p>
+                    <p class="text-gray-600">Diagnóstico: Margem Bruta baixa (19,7%)</p>
+                    <p class="text-gray-500 text-sm">Causa provável: CMV elevado, compra mal negociada</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="font-medium text-gray-700">ICMS:</p>
+                    <p class="text-gray-600">Diagnóstico: Zerado na DRE</p>
+                    <p class="text-gray-500 text-sm">Causa provável: Possível omissão fiscal ou classificação incorreta</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="font-medium text-gray-700">Despesas com Pessoal:</p>
+                    <p class="text-gray-600">Diagnóstico: 4,8%</p>
+                    <p class="text-gray-500 text-sm">Causa provável: Bem administrado</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="font-medium text-gray-700">Perdas Operacionais:</p>
+                    <p class="text-gray-600">Diagnóstico: 0,1%</p>
+                    <p class="text-gray-500 text-sm">Causa provável: Muito bem controladas</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Ações Recomendadas -->
+        <section class="w-full max-w-4xl card">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">5. Ações Recomendadas</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white rounded-lg overflow-hidden">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="py-3 px-4 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Ação</th>
+                            <th class="py-3 px-4 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Meta SMART</th>
+                            <th class="py-3 px-4 text-left text-sm font-medium text-gray-600 uppercase tracking-wider">Prioridade</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr>
+                            <td class="py-3 px-4 whitespace-nowrap">Redução do CMV</td>
+                            <td class="py-3 px-4">Atingir 75% até julho/25</td>
+                            <td class="py-3 px-4 text-red-600 font-medium">Alta</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 whitespace-nowrap">Inclusão correta do ICMS</td>
+                            <td class="py-3 px-4">Revisar e ajustar a partir de maio/25</td>
+                            <td class="py-3 px-4 text-red-600 font-medium">Alta</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 whitespace-nowrap">Sustentar Margem Líquida</td>
+                            <td class="py-3 px-4">Manter acima de 10% no próximo trimestre</td>
+                            <td class="py-3 px-4 text-red-600 font-medium">Alta</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 whitespace-nowrap">Melhorar precificação/mix de produtos</td>
+                            <td class="py-3 px-4">Alcançar Margem Bruta acima de 22% até junho/25</td>
+                            <td class="py-3 px-4 text-yellow-600 font-medium">Média</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 whitespace-nowrap">Reforço de controles fiscais</td>
+                            <td class="py-3 px-4">Iniciar auditoria interna até junho/25</td>
+                            <td class="py-3 px-4 text-yellow-600 font-medium">Média</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 6. Conclusão Final -->
+        <section class="w-full max-w-4xl card">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">6. Conclusão Final:</h2>
+            <p class="text-gray-700 mb-4">O supermercado FRI DO POVO tem boa estrutura operacional, mas precisa ajustar urgentemente seus custos de mercadoria e completar a DRE com itens obrigatórios. O foco nos próximos meses deve ser: CMV, perdas, giro e EBITDA.</p>
+            <p class="text-gray-700">Análise desenvolvida por:</p>
+            <p class="text-gray-700 font-bold">GPT | Márcio Póllo - Especialista em DRE de Supermercados</p>
+        </section>
+
+        <footer class="w-full max-w-4xl text-center mt-8 text-gray-500 text-sm">
+            <p>Relatório gerado em 12 de Julho de 2025.</p>
+        </footer>
+    </div>
+
+    <script>
+        window.onload = function() {
+            // Script para Receita Bruta
+            const receitaBrutaLabel = document.getElementById('receitaBrutaLabel');
+            const collapsibleContentReceita = document.getElementById('collapsibleContentReceita');
+
+            console.log("receitaBrutaLabel no onload:", receitaBrutaLabel);
+            console.log("collapsibleContentReceita no onload:", collapsibleContentReceita);
+
+            if (receitaBrutaLabel && collapsibleContentReceita) {
+                receitaBrutaLabel.addEventListener('click', function() {
+                    collapsibleContentReceita.classList.toggle('expanded');
+                });
+            } else {
+                console.error("ERRO: Elementos 'receitaBrutaLabel' ou 'collapsibleContentReceita' não encontrados. Verifique IDs no HTML.");
+            }
+
+            // Script para Despesas Operacionais
+            const despesasLabel = document.getElementById('despesasOperacionaisLabel');
+            const collapsibleContentDespesas = document.getElementById('collapsibleContentDespesas');
+
+            console.log("despesasLabel no onload:", despesasLabel);
+            console.log("collapsibleContentDespesas no onload:", collapsibleContentDespesas);
+
+            if (despesasLabel && collapsibleContentDespesas) {
+                despesasLabel.addEventListener('click', function() {
+                    collapsibleContentDespesas.classList.toggle('expanded');
+                });
+            } else {
+                console.error("ERRO: Elementos 'despesasOperacionaisLabel' ou 'collapsibleContentDespesas' não encontrados. Verifique IDs no HTML.");
+            }
+        };
+    </script>
+</body>
+</html>
